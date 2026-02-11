@@ -1,12 +1,121 @@
-<style>
-.card {
-    width: 80%;
-    height: auto;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentina Beatini</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; max-width: 960px; margin: 0 auto; padding: 20px; color: #333; }
+        a { color: #0066cc; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        
+        /* Profile Section */
+        .profile-container { display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap; margin-bottom: 40px; }
+        .profile-img { width: 160px; height: 160px; object-fit: cover; border-radius: 50%; border: 1px solid #e6e6e6; flex-shrink: 0;}
+        .profile-text { flex: 1; min-width: 280px; }
+        .links { margin-top: 12px; display: flex; gap: 14px; flex-wrap: wrap; }
 
-.card img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-}
-</style>
+        /* The 2x2 Grid */
+        .project-grid { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 24px; 
+            margin-top: 20px;
+            max-width: 500px;
+        }
+        
+        /* On mobile phones, switch to 1 column */
+        @media (max-width: 600px) {
+            .project-grid { grid-template-columns: 1fr; max-width: 100%; }
+            .profile-container { justify-content: center; text-align: center; }
+            .links { justify-content: center; }
+        }
+
+        .card { border: 1px solid #e8e8e8; border-radius: 8px; overflow: hidden; background: white; aspect-ratio: 1; display: flex; flex-direction: column; }
+        .card img {
+            width: 100%;
+            height: 60%;
+            object-fit: contain;
+            background-color: #f4f4f4;
+            display: block;
+            padding: 8px;
+        }
+        .card-content { padding: 12px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .card-title { font-weight: 600; margin-bottom: 6px; font-size: 0.95rem; }
+        .card-desc { line-height: 1.4; font-size: 0.85rem; color: #555; }
+    </style>
+</head>
+<body>
+
+    <div class="profile-container">
+        <img src="assets/images/profile.jpg" alt="Valentina Beatini" class="profile-img" onerror="this.style.backgroundColor='#ddd'"/>
+        
+        <div class="profile-text">
+            <h1 style="margin:0 0 8px 0;">Valentina Beatini</h1>
+            <div style="font-size:1.1rem; opacity:.85; margin-bottom:12px;">
+                Architectural Engineer · Computational Design · Reversible Structures
+            </div>
+            <div style="line-height:1.6;">
+                Architectural engineer and licensed architect working at the intersection of computation, geometry-driven methods, and reversible structural systems. Her work focuses on geometry-drive[...]
+            </div>
+            <div class="links">
+                <a href="cv.pdf">CV (PDF)</a>
+                <a href="https://scholar.google.com/citations?user=SRA9aYcAAAAJ&hl=en" target="_blank">Google Scholar</a>
+                <a href="https://github.com/" target="_blank">GitHub</a>
+                <a href="https://orcid.org/0000-0002-6916-9897" target="_blank">ORCID</a>
+            </div>
+        </div>
+    </div>
+
+    <hr style="border: 0; border-top: 1px solid #eee; margin: 30px 0;" />
+
+    <div class="project-grid">
+        
+        <div class="card">
+            <img src="assets/images/kineticPavillion.jpg" alt="Structural Systems" onerror="this.style.display='block'" />
+            <div class="card-content">
+                <div class="card-title">Structural Systems</div>
+                <div class="card-desc">
+                    Geometry-informed structural design, including masonry, active-bending systems, and deployable structures explored through analysis and prototypes.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="assets/images/Brunelleschi.jpg" alt="Computational Design" onerror="this.style.display='block'" />
+            <div class="card-content">
+                <div class="card-title">Computational Design</div>
+                <div class="card-desc">
+                    Custom solvers and parametric workflows linking geometry and performance for architectural and structural applications.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="assets/images/pinocchio.jpg" alt="Reversible Construction" onerror="this.style.display='block'" />
+            <div class="card-content">
+                <div class="card-title">Reversible Construction</div>
+                <div class="card-desc">
+                    Kinetic, demountable, and transportable construction systems developed with a focus on adaptability, reuse, and lifecycle performance.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="assets/images/buildingtech.jpg" alt="Building Technology" onerror="this.style.display='block'" />
+            <div class="card-content">
+                <div class="card-title">Building Technology & Prototyping</div>
+                <div class="card-desc">
+                    Experimental building components and façade systems developed through digital fabrication and physical testing.
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div style="margin-top: 40px; font-size: 0.9rem; color: #777;">
+        Contact: valentina.beatini@gmail.com
+    </div>
+
+</body>
+</html>
