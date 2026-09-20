@@ -10,3 +10,9 @@ thumbs.db
 .vs/github.io/FileContentIndex/a39986b7-a6ce-435a-8b25-9481f8c0b237.vsidx
 .vs/github.io/FileContentIndex/a39986b7-a6ce-435a-8b25-9481f8c0b237.vsidx
 .vs/slnx.sqlite
+# raw image source folders (web-optimized copies live in assets/images/research/)
+assets/images/BEATINI Valentina - portfolio TR extracts/
+assets/images/students/
+assets/images/Reversible & Adaptive Construction/
+assets/images/Computational Methods & Performance Modelling/
+assets/images/Geometry-informed structural analysis/

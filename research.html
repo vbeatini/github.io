@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentina Beatini � Research</title>
+    <title>Valentina Beatini — Research</title>
     <style>
 
-      
-        
         /* This rule ensures the modern font is used everywhere */
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -75,7 +73,7 @@
             .navbar a {
                 text-decoration: none;
                 color: #333;
-                font-weight: 600; /* Restored Boldness */
+                font-weight: 600;
                 padding: 6px 12px;
             }
 
@@ -103,70 +101,86 @@
             font-size: 1.05rem;
             font-weight: 550;
             color: #333;
-            margin-bottom:0;
-        }
-
-        h5.section-title {
-            font-size: 0.98rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-weight: 700;
-            color: #444;
-            margin-bottom: 8px;
+            margin-bottom: 0;
         }
 
         .pillar {
-            padding: 0 0 4px 0;
+            padding: 0 0 18px 0;
             border-top: 2px solid #e1edf2;
+            display: flex;
+            gap: 28px;
+            align-items: flex-start;
         }
 
             .pillar:first-of-type {
                 border-top: none;
             }
-        /* Grid Box */
-        .intro-band {
-            background-color: #e1edf2;
-            background-image: radial-gradient(#b8c9d1 1.5px, transparent 1.5px);
-            background-size: 18px 18px;
-            padding: 22px;
-            border-radius: 6px;
-            margin: 10px 0 24px;
-            line-height: 1.5;
-            font-size: 1rem;
-            font-weight: 500;
-            border: 1px solid rgba(0,0,0,0.08);
+
+            .pillar-text {
+                flex: 1;
+                min-width: 260px;
+            }
+
+            .pillar p {
+                margin: 8px 0 12px;
+                line-height: 1.55;
+                color: #555;
+                max-width: 85ch;
+            }
+
+        /* ===== Per-pillar photo slider ===== */
+        .slider {
+            position: relative;
+            display: inline-block;
+            max-width: 100%;
         }
 
-        /* solid colored Intro Band =====
-        .intro-band {
-            background-color: hsl(195, 45%, 90%);
-            padding: 122px;
-            border-radius: 6px;
-            margin: 10px 0 12px;
-            line-height: 1.5;
-            font-size: 1rem;
-            font-weight: 500;
-        }
-            */
-
-
-
-        /* Image Grid & Lightbox (Copy from index.html) */
-        .image-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 14px;
-            margin-top: 30px;
-        }
-            .image-grid img {
-                width: 100%;
+            .slider img {
+                display: block;
                 height: 240px;
-                object-fit: cover;
+                max-width: 100%;
+                width: auto;
+                object-fit: contain;
+                background: #f7f7f7;
                 border-radius: 8px;
                 border: 1px solid #e6e6e6;
                 cursor: pointer;
             }
 
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.75);
+            color: #333;
+            border: 1px solid rgba(0,0,0,0.08);
+            font-size: 1.4rem;
+            line-height: 1;
+            padding: 8px 14px;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+
+            .slider-btn:hover {
+                background: rgba(255,255,255,0.95);
+            }
+
+        .slider-prev { left: 10px; }
+        .slider-next { right: 10px; }
+
+        .slider-count {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            background: rgba(0,0,0,0.55);
+            color: #fff;
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+            pointer-events: none;
+        }
+
+        /* ===== Lightbox ===== */
         .lightbox {
             display: none;
             position: fixed;
@@ -176,15 +190,46 @@
             justify-content: center;
             z-index: 1000;
         }
+
             .lightbox.active {
                 display: flex;
             }
+
             .lightbox img {
                 max-width: 90%;
                 max-height: 80%;
                 border-radius: 10px;
             }
 
+        .lb-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.12);
+            color: #fff;
+            border: none;
+            font-size: 2rem;
+            padding: 8px 18px;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+
+            .lb-btn:hover {
+                background: rgba(255,255,255,0.25);
+            }
+
+        .lb-prev { left: 18px; }
+        .lb-next { right: 18px; }
+
+        .lb-caption {
+            position: absolute;
+            bottom: 24px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: #ddd;
+            font-size: 0.9rem;
+        }
 
         footer {
             margin-top: 40px;
@@ -194,12 +239,15 @@
             padding-top: 20px;
             padding-bottom: 30px;
         }
+
+        @media (max-width: 640px) {
+            .pillar { flex-direction: column; gap: 12px; }
+            .slider img { height: 200px; }
+        }
     </style>
 </head>
 
-                        <!-- Your text goes here -->
-
-<body> 
+<body>
 
     <header id="manual-header">
         <div class="header-inner">
@@ -223,53 +271,129 @@
 
         <section class="pillars">
             <div class="pillar">
-                <h2 class="section-title">Geometry & Structural Systems</h2>
-                <p>Geometry-informed structural design, including masonry, active-bending systems, and deployable structures explored through analysis and prototypes.</p>
+                <div class="pillar-text">
+                    <h2 class="section-title">Geometry-Informed Structural Design</h2>
+                    <p>Geometry-informed structural design, including masonry, active-bending systems, and deployable structures explored through analysis and prototypes.</p>
+                </div>
+                <div class="slider" data-gallery="geo">
+                    <button class="slider-btn slider-prev" aria-label="Previous image">&#8249;</button>
+                    <img src="assets/images/research/geometry-informed-analysis/brunelleschi.jpg" alt="Geometry-informed structural analysis">
+                    <button class="slider-btn slider-next" aria-label="Next image">&#8250;</button>
+                    <span class="slider-count"></span>
+                </div>
             </div>
 
             <div class="pillar">
-                <h2 class="section-title">Computational Methods & Performance Modelling</h2>
-                <p>Custom solvers and parametric workflows linking geometry and performance for architectural and structural applications, including data-driven and machine learning approaches.</p>
+                <div class="pillar-text">
+                    <h2 class="section-title">Computational Methods &amp; Performance Modelling</h2>
+                    <p>Custom solvers and parametric workflows linking geometry and performance for architectural and structural applications, including data-driven and machine learning approaches.</p>
+                </div>
+                <div class="slider" data-gallery="comp">
+                    <button class="slider-btn slider-prev" aria-label="Previous image">&#8249;</button>
+                    <img src="assets/images/research/computational-methods/mlemotionalassessment.jpg" alt="Computational methods and performance modelling">
+                    <button class="slider-btn slider-next" aria-label="Next image">&#8250;</button>
+                    <span class="slider-count"></span>
+                </div>
             </div>
 
             <div class="pillar">
-                <h2 class="section-title">Reversible & Adaptive Construction</h2>
-                <p>Kinetic, demountable, and transportable construction systems developed with a focus on adaptability, reuse, and lifecycle performance.</p>
+                <div class="pillar-text">
+                    <h2 class="section-title">Reversible &amp; Adaptive Construction</h2>
+                    <p>Kinetic, demountable, and transportable construction systems developed with a focus on adaptability, reuse, and lifecycle performance.</p>
+                </div>
+                <div class="slider" data-gallery="rev">
+                    <button class="slider-btn slider-prev" aria-label="Previous image">&#8249;</button>
+                    <img src="assets/images/research/reversible-adaptive/masonrynode.jpg" alt="Reversible and adaptive construction">
+                    <button class="slider-btn slider-next" aria-label="Next image">&#8250;</button>
+                    <span class="slider-count"></span>
+                </div>
             </div>
         </section>
-
-        <section class="image-grid">
-            <img src="assets/images/brunelleschi.jpg" alt="computational_masonry">
-            <img src="assets/images/masonryNode.jpg" alt="lightweight_reversible_masonry">
-            <img src="assets/images/kineticPavillion.jpg" alt="kinetic_pavillion">
-            <img src="assets/images/MLEmotionalAssessment.jpg" alt="ML emotional assessment">
-            <img src="assets/images/pinocchio.jpg" alt="no_scaff_reversible_masonry">
-            <img src="assets/images/temp.jpg" alt="Reversible facade">
-        </section>
-
 
         <div class="lightbox" id="lightbox">
-            <img id="lightbox-img">
+            <button class="lb-btn lb-prev" id="lb-prev">&#8249;</button>
+            <img id="lightbox-img" alt="">
+            <button class="lb-btn lb-next" id="lb-next">&#8250;</button>
+            <div class="lb-caption" id="lb-caption"></div>
         </div>
 
         <script>
-    const images = document.querySelectorAll('.image-grid img');
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightbox-img');
+            const galleries = {
+                geo: { label: 'Geometry-Informed Structural Design', imgs: [
+                    'assets/images/research/geometry-informed-analysis/brunelleschi.jpg',
+                    'assets/images/research/geometry-informed-analysis/nscd-barrel.jpg',
+                    'assets/images/research/geometry-informed-analysis/nscd-herringbone.jpg',
+                    'assets/images/research/geometry-informed-analysis/nscd-arch.jpg',
+                    'assets/images/research/geometry-informed-analysis/nscd-arch2.jpg',
+                    'assets/images/research/geometry-informed-analysis/limit-state-interlocking.jpg',
+                    'assets/images/research/geometry-informed-analysis/minimal-membranes.jpg',
+                    'assets/images/research/geometry-informed-analysis/archeology-tholos-1.jpg',
+                    'assets/images/research/geometry-informed-analysis/bistable-tensioned-membranes.jpg'
+                ]},
+                comp: { label: 'Computational Methods & Performance Modelling', imgs: [
+                    'assets/images/research/computational-methods/mlemotionalassessment.jpg',
+                    'assets/images/research/computational-methods/student-k-hojberg-computational-gridshell-design.jpg',
+                    'assets/images/research/computational-methods/student-a-fatullah-active-bending-twisting.jpg',
+                    'assets/images/research/computational-methods/students-j-corneliusen-and-s-deleuran.jpg'
+                ]},
+                rev: { label: 'Reversible & Adaptive Construction', imgs: [
+                    'assets/images/research/reversible-adaptive/masonrynode.jpg',
+                    'assets/images/research/reversible-adaptive/marmomac2025.jpg',
+                    'assets/images/research/reversible-adaptive/beta-joint.jpg',
+                    'assets/images/research/reversible-adaptive/beta-join-2t.jpg',
+                    'assets/images/research/reversible-adaptive/pinocchio.jpg',
+                    'assets/images/research/reversible-adaptive/kineticpavillion.jpg',
+                    'assets/images/research/reversible-adaptive/emergency-shelters.jpg',
+                    'assets/images/research/reversible-adaptive/modular-building-origami.jpg',
+                    'assets/images/research/reversible-adaptive/bistable-tensioned-membranes.jpg'
+                ]}
+            };
 
-            images.forEach(img => {
-                img.addEventListener('click', () => {
-                    lightbox.classList.add('active');
-                    lightboxImg.src = img.src;
-                });
+            /* ---- Inline sliders (one per pillar) ---- */
+            document.querySelectorAll('.slider').forEach(slider => {
+                const gal = galleries[slider.dataset.gallery];
+                const img = slider.querySelector('img');
+                const count = slider.querySelector('.slider-count');
+                let idx = 0;
+
+                function show() {
+                    img.src = gal.imgs[idx];
+                    count.textContent = (idx + 1) + ' / ' + gal.imgs.length;
+                }
+
+                slider.querySelector('.slider-prev').addEventListener('click', () => { idx = (idx - 1 + gal.imgs.length) % gal.imgs.length; show(); });
+                slider.querySelector('.slider-next').addEventListener('click', () => { idx = (idx + 1) % gal.imgs.length; show(); });
+                img.addEventListener('click', () => openLightbox(gal, idx));
+                show();
             });
 
-            lightbox.addEventListener('click', () => {
-                lightbox.classList.remove('active');
-            });</script>
+            /* ---- Lightbox ---- */
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lbCaption = document.getElementById('lb-caption');
+            let lbGal = null, lbIdx = 0;
 
+            function openLightbox(gal, idx) {
+                lbGal = gal; lbIdx = idx; lbShow();
+                lightbox.classList.add('active');
+            }
 
+            function lbShow() {
+                lightboxImg.src = lbGal.imgs[lbIdx];
+                lbCaption.textContent = lbGal.label + ' · ' + (lbIdx + 1) + ' / ' + lbGal.imgs.length;
+            }
 
+            document.getElementById('lb-prev').addEventListener('click', (e) => { e.stopPropagation(); lbIdx = (lbIdx - 1 + lbGal.imgs.length) % lbGal.imgs.length; lbShow(); });
+            document.getElementById('lb-next').addEventListener('click', (e) => { e.stopPropagation(); lbIdx = (lbIdx + 1) % lbGal.imgs.length; lbShow(); });
+            lightbox.addEventListener('click', () => lightbox.classList.remove('active'));
+
+            document.addEventListener('keydown', (e) => {
+                if (!lightbox.classList.contains('active')) return;
+                if (e.key === 'ArrowLeft') document.getElementById('lb-prev').click();
+                if (e.key === 'ArrowRight') document.getElementById('lb-next').click();
+                if (e.key === 'Escape') lightbox.classList.remove('active');
+            });
+        </script>
 
         <div class="footer">
             <p>&copy; Valentina Beatini</p>
